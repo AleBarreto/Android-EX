@@ -55,7 +55,6 @@ jobs:
   danger:
     needs: [unit-test,check-klint,check-detekt]
     runs-on: ubuntu-latest
-    if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     steps:
       - name: Download detekt result
         uses: actions/download-artifact@v2
@@ -69,6 +68,8 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.6'
+      - name: test files
+        run: ls
       - uses: actions/cache@v1
         with:
           path: vendor/bundle
