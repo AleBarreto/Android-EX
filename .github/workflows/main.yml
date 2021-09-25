@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Unit Tests
-      - run: ls app/build/outputs/apk/
+        run: ls app/build/outputs/apk/
 
   build-lint:
     needs: [build-setup]
