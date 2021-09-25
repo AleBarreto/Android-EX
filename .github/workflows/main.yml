@@ -9,6 +9,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build assemble
         run: ./gradlew assemble
+      - name: Upload Apk
+      - uses: actions/upload-artifact@v2
+        with:
+          name: App
+          path: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
 
   unit-test:
     needs: [build-setup]
@@ -16,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Unit Tests
-        run: ls app/build/outputs/apk/
+        run: ls ${{ github.workspace }}/app/build/outputs/apk/
 
   build-lint:
     needs: [build-setup]
