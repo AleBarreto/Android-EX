@@ -18,40 +18,26 @@ jobs:
       - name: Unit Tests
         run: ./gradlew test
 
-  static_analysis:
+  check-lint:
     needs: [build-setup]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Check klint and detekt
-        run: ./gradlew ktlintVerification detektVerification
-      - name: Upload klint result
-        uses: actions/upload-artifact@v2
-        with:
-          name: result_analysis
-          path: ${{ github.workspace }}/app/build/reports/
+      - name: Check Lint
+        run: ./gradlew lint
 
-  danger:
-    needs: [static_analysis]
+  check-klint:
+    needs: [build-setup]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.6'
-      - uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }} # change your gemfile path
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      - uses: MeilCli/danger-action@v5
-      - uses: actions/download-artifact@v2
-        with:
-          name: result_analysis
-          plugins_file: 'Gemfile'
-          install_path: 'vendor/bundle'
-          danger_file: 'Dangerfile'
-          danger_id: 'danger-pr'
-        env:
-          DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_KEY }}
+      - name: Check Klint
+        run: ./gradlew ktlintVerification
+
+  check-detekt:
+    needs: [build-setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check Detekt
+        run: ./gradlew detektVerification
