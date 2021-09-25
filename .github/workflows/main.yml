@@ -18,58 +18,27 @@ jobs:
       - name: Unit Tests
         run: ./gradlew test
 
-  check-lint:
+  static_analysis:
     needs: [build-setup]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Check Lint
-        run: ./gradlew lint
-
-  check-klint:
-    needs: [build-setup]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Check Klint
-        run: ./gradlew ktlintVerification
+      - name: Check klint and detekt
+        run: ./gradlew ktlintVerification detektVerification
       - name: Upload klint result
         uses: actions/upload-artifact@v2
         with:
-          name: ktlint-result
-          path: ${{ github.workspace }}/app/build/reports/ktlint/ktlint-checkstyle.xml
-
-  check-detekt:
-    needs: [build-setup]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Check Detekt
-        run: ./gradlew detektVerification
-      - name: Upload detekt result
-        uses: actions/upload-artifact@v2
-        with:
-          name: detekt-result
-          path: ${{ github.workspace }}/app/build/reports/detekt/detekt-checkstyle.xml
+          name: result_analysis
+          path: ${{ github.workspace }}/app/build/reports/
 
   danger:
     needs: [unit-test,check-klint,check-detekt]
     runs-on: ubuntu-latest
     steps:
-      - name: Download detekt result
-        uses: actions/download-artifact@v2
-        with:
-          name: detekt-result
-      - name: Download klint result
-        uses: actions/download-artifact@v2
-        with:
-          name: ktlint-result
       - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.6'
-      - name: test files
-        run: ls
       - uses: actions/cache@v1
         with:
           path: vendor/bundle
@@ -77,7 +46,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       - uses: MeilCli/danger-action@v5
+      - uses: actions/download-artifact@v2
         with:
+          name: result_analysis
           plugins_file: 'Gemfile'
           install_path: 'vendor/bundle'
           danger_file: 'Dangerfile'
