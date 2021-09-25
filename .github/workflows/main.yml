@@ -1,0 +1,11 @@
+name: Main Flow Android EX
+
+on: [push]
+
+jobs:
+  build-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build assemble
+        run: ./gradlew assemble
