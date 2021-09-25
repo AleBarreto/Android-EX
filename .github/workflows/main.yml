@@ -51,3 +51,34 @@ jobs:
         with:
           name: detekt-result
           path: ${{ github.workspace }}/app/build/reports/detekt/detekt-checkstyle.xml
+
+  danger:
+    runs-on: ubuntu-latest
+    if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
+    steps:
+      - name: Download detekt result
+        uses: actions/download-artifact@v2
+        with:
+          name: detekt-result
+      - name: Download klint result
+        uses: actions/download-artifact@v2
+        with:
+          name: ktlint-result
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
+      - uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }} # change your gemfile path
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - uses: MeilCli/danger-action@v5
+        with:
+          plugins_file: 'Gemfile'
+          install_path: 'vendor/bundle'
+          danger_file: 'Dangerfile'
+          danger_id: 'danger-pr'
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_KEY }}
