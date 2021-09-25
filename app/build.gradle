@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
+apply from: "${rootDir}/config/ktlint/klint.gradle"
 
 android {
     compileSdk 30
