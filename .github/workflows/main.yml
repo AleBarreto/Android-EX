@@ -16,7 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Unit Tests
-        run: ./gradlew test
+      - run: ls app/build/outputs/apk/
+      - run: ./gradlew test
 
   build-lint:
     needs: [build-setup]
