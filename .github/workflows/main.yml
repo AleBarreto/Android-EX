@@ -53,6 +53,7 @@ jobs:
           path: ${{ github.workspace }}/app/build/reports/detekt/detekt-checkstyle.xml
 
   danger:
+    needs: [unit-test,check-klint,check-detekt]
     runs-on: ubuntu-latest
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     steps:
