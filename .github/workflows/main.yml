@@ -1,0 +1,43 @@
+name: Main Flow Android EX
+
+on: [push]
+
+jobs:
+  build-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build assemble
+        run: ./gradlew assemble
+
+  unit-test:
+    needs: [build-setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Unit Tests
+        run: ./gradlew test
+
+  check-lint:
+    needs: [build-setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check Lint
+        run: ./gradlew lint
+
+  check-klint:
+    needs: [build-setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check Klint
+        run: ./gradlew ktlintVerification
+
+  check-detekt:
+    needs: [build-setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check Detekt
+        run: ./gradlew detektVerification
