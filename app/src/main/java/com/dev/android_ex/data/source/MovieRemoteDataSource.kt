@@ -4,8 +4,9 @@ import com.dev.android_ex.data.model.response.MovieResponse
 import com.dev.android_ex.data.model.response.MovieResultResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
+import javax.inject.Inject
 
-class MovieRemoteDataSource {
+class MovieRemoteDataSource @Inject constructor() {
 
     fun getPopularMovies(): Flow<MovieResultResponse> = fakeDataPopularMovies()
 
