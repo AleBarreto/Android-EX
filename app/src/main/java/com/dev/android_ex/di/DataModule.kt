@@ -15,5 +15,4 @@ abstract class DataModule {
     abstract fun bindRepository(
         movieRepositoryImpl: MovieRepositoryImpl
     ): MovieRepository
-
 }

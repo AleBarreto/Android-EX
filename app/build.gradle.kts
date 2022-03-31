@@ -6,8 +6,8 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-apply(from = "${rootDir}/config/ktlint/klint.gradle")
-apply(from = "${rootDir}/config/detekt/detekt.gradle")
+apply(from = "${rootDir}/config/ktlint/klint.gradle.kts")
+apply(from = "${rootDir}/config/detekt/detekt.gradle.kts")
 
 android {
     compileSdk = 31
