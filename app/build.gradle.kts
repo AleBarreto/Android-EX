@@ -10,14 +10,14 @@ apply(from = "${rootDir}/config/ktlint/klint.gradle.kts")
 apply(from = "${rootDir}/config/detekt/detekt.gradle.kts")
 
 android {
-    compileSdk = 31
+    compileSdk = BuildConfig.COMPILE_SDK
     defaultConfig {
-        applicationId = "com.dev.android_ex"
-        minSdk = 21
-        targetSdk = 31
-        versionCode = 1
-        versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = BuildConfig.APPLICATION_ID
+        minSdk = BuildConfig.MIN_SDK
+        targetSdk = BuildConfig.TARGET_SDK
+        versionCode = BuildConfig.VERSION_CODE
+        versionName = BuildConfig.VERSION_NAME
+        testInstrumentationRunner = BuildConfig.TEST_INSTRUMENTATION_RUNNER
     }
     buildTypes {
         getByName("release") {
@@ -28,22 +28,14 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    implementation("androidx.activity:activity-ktx:1.4.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
+    AndroidX.loadAll().forEach { implementation(it) }
 
-    implementation("com.google.code.gson:gson:2.8.6")
-    implementation("com.google.android.material:material:1.5.0")
-    implementation("com.google.dagger:hilt-android:2.40.5")
-    kapt("com.google.dagger:hilt-compiler:2.40.5")
+    Google.loadAll().forEach { implementation(it) }
+    kapt(Google.hiltCompiler)
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
+    Coroutines.loadAll().forEach { implementation(it) }
 
+    JUnit.loadAll().forEach { testImplementation(it) }
 
-    testImplementation("junit:junit:4.+")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    AndroidTest.loadAll().forEach { androidTestImplementation(it) }
 }
