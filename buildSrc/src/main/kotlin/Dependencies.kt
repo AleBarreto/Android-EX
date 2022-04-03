@@ -33,6 +33,16 @@ object Coroutines {
     )
 }
 
+object RetrofitConfig {
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val converterGson = "com.squareup.retrofit2:converter-gson:${Versions.gsonConvert}"
+    const val logInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.logInterceptor}"
+
+    fun loadAll() = listOf(
+        retrofit, converterGson, logInterceptor
+    )
+}
+
 object JUnit {
     const val jUnit = "junit:junit:${Versions.jUnit}"
     fun loadAll() = listOf(

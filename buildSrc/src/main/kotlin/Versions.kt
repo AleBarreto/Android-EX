@@ -13,6 +13,10 @@ object Versions {
     const val coroutinesCore = "1.3.8"
     const val coroutinesAndroid = "1.5.0"
 
+    const val retrofit = "2.9.0"
+    const val gsonConvert = "2.9.0"
+    const val logInterceptor = "4.9.3"
+
     const val jUnit = "4.+"
 
     const val jUnitExt = "1.1.3"
