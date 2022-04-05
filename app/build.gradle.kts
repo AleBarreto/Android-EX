@@ -23,10 +23,12 @@ android {
     }
     buildTypes {
         getByName("debug") {
-            loadSecretUrl()
+            loadSecretKeyTmDb()
+            buildConfigField("String", "BASE_URL_TMDB", "\"https://api.themoviedb.org/3/\"")
         }
         getByName("release") {
-            loadSecretUrl()
+            loadSecretKeyTmDb()
+            buildConfigField("String", "BASE_URL_TMDB", "\"https://api.themoviedb.org/3/\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -51,12 +53,14 @@ dependencies {
 
     Coroutines.loadAll().forEach { implementation(it) }
 
+    RetrofitConfig.loadAll().forEach { implementation(it) }
+
     JUnit.loadAll().forEach { testImplementation(it) }
 
     AndroidTest.loadAll().forEach { androidTestImplementation(it) }
 }
 
-fun ApplicationBuildType.loadSecretUrl(fileName: String = "secrets.properties") {
+fun ApplicationBuildType.loadSecretKeyTmDb(fileName: String = "secrets.properties") {
     val value = gradleSecretProperties(rootDir, fileName).getProperty("PROP_API_KEY_TMDB")
     buildConfigField("String", "API_KEY_TMDB", "\"$value\"")
 }
