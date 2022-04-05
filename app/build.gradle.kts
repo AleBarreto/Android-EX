@@ -1,8 +1,10 @@
+import com.android.build.api.dsl.ApplicationBuildType
+
 plugins {
     id("com.android.application")
-    id ("kotlin-android")
-    id ("kotlin-parcelize")
-    id ("kotlin-kapt")
+    id("kotlin-android")
+    id("kotlin-parcelize")
+    id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
 }
 
@@ -20,9 +22,16 @@ android {
         testInstrumentationRunner = BuildConfig.TEST_INSTRUMENTATION_RUNNER
     }
     buildTypes {
+        getByName("debug") {
+            loadSecretUrl()
+        }
         getByName("release") {
+            loadSecretUrl()
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -45,4 +54,9 @@ dependencies {
     JUnit.loadAll().forEach { testImplementation(it) }
 
     AndroidTest.loadAll().forEach { androidTestImplementation(it) }
+}
+
+fun ApplicationBuildType.loadSecretUrl(fileName: String = "secrets.properties") {
+    val value = gradleSecretProperties(rootDir, fileName).getProperty("PROP_API_KEY_TMDB")
+    buildConfigField("String", "API_KEY_TMDB", "\"$value\"")
 }

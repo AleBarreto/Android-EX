@@ -7,6 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Decrypt secrets.properties.gpg
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$SECRET_KEY_TMDB" --output secrets.properties secrets.properties.gpg
+        env:
+          SECRET_KEY_TMDB: ${{ secrets.SECRET_KEY_TMDB }}
+
       - name: Build assemble
         run: ./gradlew assemble
 
