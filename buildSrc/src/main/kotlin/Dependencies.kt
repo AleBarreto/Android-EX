@@ -11,6 +11,14 @@ object AndroidX {
     )
 }
 
+object Features {
+    const val featureA = ":features:featureA"
+
+    fun loadAll() = listOf(
+        featureA
+    )
+}
+
 object Google {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val material = "com.google.android.material:material:${Versions.materialDesign}"

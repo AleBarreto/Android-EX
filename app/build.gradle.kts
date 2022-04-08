@@ -48,6 +48,8 @@ android {
 dependencies {
     AndroidX.loadAll().forEach { implementation(it) }
 
+    Features.loadAll().forEach { implementation(project(it)) }
+
     Google.loadAll().forEach { implementation(it) }
     kapt(Google.hiltCompiler)
 

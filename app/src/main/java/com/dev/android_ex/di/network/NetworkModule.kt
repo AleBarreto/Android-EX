@@ -1,4 +1,4 @@
-package com.dev.android_ex.di
+package com.dev.android_ex.di.network
 
 import com.dev.android_ex.BuildConfig
 import dagger.Module
@@ -23,10 +23,17 @@ object NetworkModule {
         }
 
     @Provides
-    fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+    fun providesDefaultInterceptorQueryParameter() = DefaultQueryParameterInterceptor()
+
+    @Provides
+    fun providesOkHttpClient(
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        defaultInterceptorQueryParameter: DefaultQueryParameterInterceptor
+    ): OkHttpClient =
         OkHttpClient
             .Builder()
             .addInterceptor(httpLoggingInterceptor)
+            .addInterceptor(defaultInterceptorQueryParameter)
             .build()
 
     @Singleton
