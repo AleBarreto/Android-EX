@@ -2,7 +2,6 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
-    id("kotlin-parcelize")
     id("dagger.hilt.android.plugin")
 }
 
@@ -13,16 +12,6 @@ android {
         targetSdk = BuildConfig.TARGET_SDK
         testInstrumentationRunner = BuildConfig.TEST_INSTRUMENTATION_RUNNER
         consumerProguardFiles("proguard-rules.pro")
-    }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
     }
 
     compileOptions {
@@ -36,15 +25,8 @@ android {
 }
 
 dependencies {
-    implementation(project(Commons.get()))
-
-    AndroidX.loadAll().forEach { implementation(it) }
-
-    implementation(RetrofitConfig.retrofit)
-
+    RetrofitConfig.loadAll().forEach { implementation(it) }
+    Coroutines.loadAll().forEach { implementation(it) }
     Google.loadAll().forEach { implementation(it) }
     kapt(Google.hiltCompiler)
-
-    JUnit.loadAll().forEach { testImplementation(it) }
-    AndroidTest.loadAll().forEach { androidTestImplementation(it) }
 }

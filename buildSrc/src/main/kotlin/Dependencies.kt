@@ -24,6 +24,11 @@ object Network {
     fun get() = network
 }
 
+object Commons {
+    private const val commons = ":commons"
+    fun get() = commons
+}
+
 object Google {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val material = "com.google.android.material:material:${Versions.materialDesign}"
