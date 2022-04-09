@@ -8,8 +8,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-internal class MovieRepositoryImpl @Inject constructor(private val remoteDataSource: RemoteMovieDataSource) :
-    MovieRepository {
+internal class MovieRepositoryImpl @Inject constructor(
+    private val remoteDataSource: RemoteMovieDataSource
+) : MovieRepository {
     override fun getPopularMovies(): Flow<MovieResult> =
-        remoteDataSource.getPopularMovies().map { it.toDomain() }
+        remoteDataSource.getPopularMovies()
+            .map { movieResultResponse ->
+                movieResultResponse.toDomain()
+            }
 }

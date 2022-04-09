@@ -1,10 +1,10 @@
-package com.dev.featurea.presentation
+package com.dev.featureb.presentation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev.commons.coroutine.di.DispatchersIo
-import com.dev.featurea.domain.usecase.GetPopularMoviesUseCase
+import com.dev.featureb.domain.usecase.MovieDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.collect
@@ -13,16 +13,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-internal class FeatureAViewModel @Inject constructor(
-    private val useCase: GetPopularMoviesUseCase,
+internal class FeatureBViewModel @Inject constructor(
+    private val useCase: MovieDetailUseCase,
     @DispatchersIo private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    fun test() = viewModelScope.launch {
-        useCase()
+    fun test(idMovie: Long = 634649) = viewModelScope.launch {
+        useCase(idMovie)
             .flowOn(dispatcher)
             .collect {
-                Log.d("ALECOSTA", "collect = $it")
+                Log.d("ALECOSTA", "MovieDetailUseCase = $it")
             }
     }
+
 }

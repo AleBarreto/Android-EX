@@ -13,9 +13,10 @@ object AndroidX {
 
 object Features {
     const val featureA = ":features:featureA"
+    const val featureB = ":features:featureB"
 
     fun loadAll() = listOf(
-        featureA
+        featureA, featureB
     )
 }
 
