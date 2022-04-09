@@ -1,6 +1,7 @@
-package com.dev.android_ex.di.network
+package com.dev.network.di
 
-import com.dev.android_ex.BuildConfig
+import com.dev.network.BuildConfig
+import com.dev.network.interceptor.DefaultQueryParameterInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+internal object NetworkModule {
 
     @Provides
     fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor()

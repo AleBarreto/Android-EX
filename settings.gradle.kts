@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "Android-EX"
 include(":app")
 include(":features:featureA")
+include(":network")

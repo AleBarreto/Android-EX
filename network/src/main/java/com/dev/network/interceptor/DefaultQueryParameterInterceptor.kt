@@ -1,6 +1,6 @@
-package com.dev.android_ex.di.network
+package com.dev.network.interceptor
 
-import com.dev.android_ex.BuildConfig
+import com.dev.network.BuildConfig
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.Request
@@ -11,7 +11,7 @@ private const val API_KEY = "api_key"
 /**
  * Based https://futurestud.io/tutorials/retrofit-2-how-to-add-query-parameters-to-every-request
  */
-class DefaultQueryParameterInterceptor : Interceptor {
+internal class DefaultQueryParameterInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val requestOriginal: Request = chain.request()
         val url: HttpUrl = requestOriginal.url.newBuilder()

@@ -19,6 +19,11 @@ object Features {
     )
 }
 
+object Network {
+    private const val network = ":network"
+    fun get() = network
+}
+
 object Google {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val material = "com.google.android.material:material:${Versions.materialDesign}"
