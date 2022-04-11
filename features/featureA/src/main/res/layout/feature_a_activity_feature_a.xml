@@ -4,11 +4,20 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tvFeatureA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="Oi FeatureA"
         android:textColor="@android:color/black"
         android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/btnFeatureB"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/tvFeatureA"
+        android:text="call featureB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

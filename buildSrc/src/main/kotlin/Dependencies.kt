@@ -30,6 +30,11 @@ object Commons {
     fun get() = commons
 }
 
+object Navigation {
+    private const val navigation = ":navigation"
+    fun get() = navigation
+}
+
 object Google {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val material = "com.google.android.material:material:${Versions.materialDesign}"

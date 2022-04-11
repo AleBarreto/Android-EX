@@ -8,4 +8,5 @@ android {
 
 dependencies {
     // module specific dependencies
+    implementation(project(Navigation.get()))
 }
