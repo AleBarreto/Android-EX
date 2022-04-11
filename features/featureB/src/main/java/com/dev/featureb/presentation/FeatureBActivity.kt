@@ -7,7 +7,7 @@ import com.dev.featureb.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FeatureBActivity : AppCompatActivity(R.layout.activity_feature_b) {
+class FeatureBActivity : AppCompatActivity(R.layout.feature_b_activity_feature_b) {
 
     private val viewModel: FeatureBViewModel by viewModels()
 
