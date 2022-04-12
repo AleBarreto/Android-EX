@@ -4,6 +4,9 @@ plugins {
 
 android {
     resourcePrefix = "featureA"
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {

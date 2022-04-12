@@ -57,6 +57,18 @@ object Coroutines {
     )
 }
 
+object LifecycleKtx {
+    private const val lifecycleKtx= "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleKtx}"
+    fun get() = lifecycleKtx
+}
+
+object Glide {
+    private const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    private const val glideProcessor = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    fun get() = glide
+    fun getProcessor() = glideProcessor
+}
+
 object RetrofitConfig {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val converterGson = "com.squareup.retrofit2:converter-gson:${Versions.gsonConvert}"

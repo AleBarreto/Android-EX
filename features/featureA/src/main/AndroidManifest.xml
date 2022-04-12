@@ -3,7 +3,7 @@
     package="com.dev.featurea">
 
     <application>
-        <activity android:name=".presentation.FeatureAActivity"/>
+        <activity android:name=".presentation.ui.FeatureAActivity"/>
     </application>
 
 </manifest>

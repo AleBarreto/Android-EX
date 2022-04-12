@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.android_ex.R
-import com.dev.featurea.presentation.FeatureAActivity
+import com.dev.featurea.presentation.ui.FeatureAActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
