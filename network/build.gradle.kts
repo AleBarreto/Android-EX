@@ -2,9 +2,9 @@ import com.android.build.api.dsl.LibraryBuildType
 
 plugins {
     id("com.android.library")
+    id("commons.android-base-feature")
     id("kotlin-android")
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -37,8 +37,6 @@ android {
 
 dependencies {
     RetrofitConfig.loadAll().forEach { implementation(it) }
-    Google.loadAll().forEach { implementation(it) }
-    kapt(Google.hiltCompiler)
 }
 
 fun LibraryBuildType.loadSecretKeyTmDb(fileName: String = "secrets.properties") {

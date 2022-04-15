@@ -1,10 +1,8 @@
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-parcelize")
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
 }
 
 apply(from = "${rootDir}/config/ktlint/klint.gradle.kts")
@@ -49,9 +47,10 @@ dependencies {
     implementation(project(Network.get()))
 
     Google.loadAll().forEach { implementation(it) }
-    kapt(Google.hiltCompiler)
 
     Coroutines.loadAll().forEach { implementation(it) }
+
+    implementation(Koin.get())
 
     JUnit.loadAll().forEach { testImplementation(it) }
 

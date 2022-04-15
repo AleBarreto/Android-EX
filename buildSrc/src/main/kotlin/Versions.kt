@@ -11,8 +11,6 @@ object Versions {
 
     const val gson = "2.8.6"
     const val materialDesign = "1.5.0"
-    const val hiltAndroid = "2.40.5"
-    const val hiltCompiler = "2.40.5"
 
     const val coroutinesCore = "1.6.0"
     const val coroutinesAndroid = "1.5.1"
@@ -25,4 +23,6 @@ object Versions {
 
     const val jUnitExt = "1.1.3"
     const val espressoCore = "3.4.0"
+
+    const val koin = "3.1.6"
 }

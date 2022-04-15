@@ -4,9 +4,8 @@ import android.content.Context
 import android.content.Intent
 import com.dev.featurea.presentation.ui.FeatureAActivity
 import com.dev.navigation.featureA.FeatureANavigation
-import javax.inject.Inject
 
-internal class FeatureANavigationImpl @Inject constructor() : FeatureANavigation {
+internal class FeatureANavigationImpl : FeatureANavigation {
     override fun navigationToFeatureA(context: Context) {
         context.startActivity(Intent(context, FeatureAActivity::class.java))
     }

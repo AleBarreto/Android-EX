@@ -38,12 +38,15 @@ object Navigation {
 object Google {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val material = "com.google.android.material:material:${Versions.materialDesign}"
-    const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hiltAndroid}"
-    const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hiltCompiler}"
 
     fun loadAll() = listOf(
-        gson, material, hiltAndroid
+        gson, material
     )
+}
+
+object Koin {
+    private val koin = "io.insert-koin:koin-android:${Versions.koin}"
+    fun get() = koin
 }
 
 object Coroutines {
@@ -58,7 +61,9 @@ object Coroutines {
 }
 
 object LifecycleKtx {
-    private const val lifecycleKtx= "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleKtx}"
+    private const val lifecycleKtx =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleKtx}"
+
     fun get() = lifecycleKtx
 }
 

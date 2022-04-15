@@ -1,18 +1,16 @@
 package com.dev.featureb.presentation
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.featureb.R
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
-class FeatureBActivity : AppCompatActivity(R.layout.feature_b_activity_feature_b) {
+internal class FeatureBActivity : AppCompatActivity(R.layout.feature_b_activity_feature_b) {
 
-    private val viewModel: FeatureBViewModel by viewModels()
+    private val viewModel: FeatureBViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-          viewModel.test()
+        viewModel.test()
     }
 }

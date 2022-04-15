@@ -6,9 +6,8 @@ import com.dev.featureb.domain.model.MovieResultDetail
 import com.dev.featureb.domain.repository.MovieDetailRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-internal class MovieDetailRepositoryImpl @Inject constructor(
+internal class MovieDetailRepositoryImpl(
     private val remoteDataSource: RemoteMovieDetailDataSource
 ) : MovieDetailRepository {
     override fun getMovieDetail(idMovie: Long): Flow<MovieResultDetail> =

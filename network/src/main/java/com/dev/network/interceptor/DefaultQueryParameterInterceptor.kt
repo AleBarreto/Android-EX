@@ -8,9 +8,7 @@ import okhttp3.Response
 
 private const val API_KEY = "api_key"
 
-/**
- * Based https://futurestud.io/tutorials/retrofit-2-how-to-add-query-parameters-to-every-request
- */
+
 internal class DefaultQueryParameterInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val requestOriginal: Request = chain.request()

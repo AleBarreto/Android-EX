@@ -1,7 +1,6 @@
 package com.dev.featurea.presentation.ui
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.commons.lifecycle.observerViewModelWhenStarted
 import com.dev.featurea.R
@@ -10,15 +9,14 @@ import com.dev.featurea.presentation.viewmodel.FeatureAViewModel
 import com.dev.featurea.presentation.viewmodel.MovieUiAction
 import com.dev.featurea.presentation.viewmodel.MovieUiState
 import com.dev.navigation.featureB.FeatureBNavigation
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class FeatureAActivity : AppCompatActivity(R.layout.feature_a_activity_feature_a) {
 
-    @Inject
-    lateinit var navigation: FeatureBNavigation
-    private val viewModel: FeatureAViewModel by viewModels()
+
+    private val navigation: FeatureBNavigation by inject()
+    private val viewModel: FeatureAViewModel by viewModel()
 
     private val adapter by lazy { AdapterMovie() }
     private val binding by lazy { FeatureAActivityFeatureABinding.inflate(layoutInflater) }

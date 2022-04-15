@@ -5,7 +5,6 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
-    id("dagger.hilt.android.plugin")
 }
 
 @Suppress("UnstableApiUsage")
@@ -41,7 +40,7 @@ dependencies {
     AndroidX.loadAll().forEach { implementation(it) }
     implementation(RetrofitConfig.retrofit)
     Google.loadAll().forEach { implementation(it) }
-    kapt(Google.hiltCompiler)
+    implementation(Koin.get())
     JUnit.loadAll().forEach { testImplementation(it) }
     AndroidTest.loadAll().forEach { androidTestImplementation(it) }
 }

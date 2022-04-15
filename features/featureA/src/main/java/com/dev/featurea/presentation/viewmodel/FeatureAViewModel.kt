@@ -2,18 +2,15 @@ package com.dev.featurea.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dev.commons.coroutine.di.DispatchersIo
 import com.dev.featurea.domain.usecase.GetPopularMoviesUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-internal class FeatureAViewModel @Inject constructor(
+internal class FeatureAViewModel(
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val useCase: GetPopularMoviesUseCase,
-    @DispatchersIo private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MovieUiState())

@@ -4,7 +4,7 @@ plugins {
 
 android {
     resourcePrefix = "featureA"
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 }
@@ -12,4 +12,5 @@ android {
 dependencies {
     // module specific dependencies
     implementation(project(Navigation.get()))
+    implementation(project(Network.get()))
 }

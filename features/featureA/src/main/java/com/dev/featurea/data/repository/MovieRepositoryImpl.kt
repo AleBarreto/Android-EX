@@ -6,9 +6,8 @@ import com.dev.featurea.domain.model.MovieResult
 import com.dev.featurea.domain.repository.MovieRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-internal class MovieRepositoryImpl @Inject constructor(
+internal class MovieRepositoryImpl(
     private val remoteDataSource: RemoteMovieDataSource
 ) : MovieRepository {
     override fun getPopularMovies(): Flow<MovieResult> =
