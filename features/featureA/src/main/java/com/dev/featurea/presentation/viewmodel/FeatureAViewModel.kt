@@ -1,5 +1,6 @@
 package com.dev.featurea.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev.commons.coroutine.di.DispatchersIo

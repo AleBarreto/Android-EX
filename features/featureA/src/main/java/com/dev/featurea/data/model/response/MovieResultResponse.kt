@@ -29,7 +29,7 @@ data class MovieResponse(
     @SerializedName(value = "popularity")
     val popularity: Double,
     @SerializedName(value = "poster_path")
-    val posterPath: String,
+    val posterPath: String? = null,
     @SerializedName(value = "release_date")
     val releaseDate: String,
     @SerializedName(value = "title")
