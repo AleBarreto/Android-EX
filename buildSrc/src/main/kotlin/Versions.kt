@@ -4,6 +4,7 @@ object Versions {
     const val constraintLayout = "2.1.3"
     const val activityKtx = "1.4.0"
     const val viewModelKtx = "2.4.1"
+    const val palette = "1.0.0"
 
     const val lifecycleKtx = "2.4.1"
 

@@ -2,6 +2,7 @@ package com.dev.featureb.data.repository
 
 import com.dev.featureb.data.mappers.toDomain
 import com.dev.featureb.data.sources.RemoteMovieDetailDataSource
+import com.dev.featureb.domain.model.Credits
 import com.dev.featureb.domain.model.MovieResultDetail
 import com.dev.featureb.domain.repository.MovieDetailRepository
 import kotlinx.coroutines.flow.Flow
@@ -15,5 +16,11 @@ internal class MovieDetailRepositoryImpl @Inject constructor(
         remoteDataSource.getMovieDetail(idMovie = idMovie)
             .map { movieResultDetailResponse ->
                 movieResultDetailResponse.toDomain()
+            }
+
+    override fun getCreditsByMovieId(idMovie: Long): Flow<Credits> =
+        remoteDataSource.getCreditsByMovieId(idMovie = idMovie)
+            .map { creditsResult ->
+                creditsResult.toDomain()
             }
 }

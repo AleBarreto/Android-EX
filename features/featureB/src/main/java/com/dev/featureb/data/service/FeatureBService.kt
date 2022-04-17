@@ -1,5 +1,6 @@
 package com.dev.featureb.data.service
 
+import com.dev.featureb.data.model.response.CreditsResponse
 import com.dev.featureb.data.model.response.MovieResultDetailResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -9,9 +10,11 @@ internal interface FeatureBService {
 
     @GET("movie/{id}")
     suspend fun getMovieDetail(
-        @Path("id")
-        idMovie: Long,
-        @Query("language")
-        language: String = "pt-BR"
+        @Path("id") idMovie: Long, @Query("language") language: String = "pt-BR"
     ): MovieResultDetailResponse
+
+    @GET("movie/{id}/credits")
+    suspend fun getCreditsByMovieId(
+        @Path("id") idMovie: Long, @Query("language") language: String = "pt-BR"
+    ): CreditsResponse
 }

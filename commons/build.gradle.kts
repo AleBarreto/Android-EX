@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation(LifecycleKtx.get())
 
+    implementation(AndroidX.palette)
     implementation(Glide.get())
     kapt(Glide.getProcessor())
 

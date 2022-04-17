@@ -5,6 +5,7 @@ object AndroidX {
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtx}"
     const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModelKtx}"
+    const val palette = "androidx.palette:palette-ktx:${Versions.palette}"
 
     fun loadAll() = listOf(
         coreKtx, appCompat, constraintLayout, activityKtx, viewModelKtx
@@ -58,7 +59,9 @@ object Coroutines {
 }
 
 object LifecycleKtx {
-    private const val lifecycleKtx= "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleKtx}"
+    private const val lifecycleKtx =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleKtx}"
+
     fun get() = lifecycleKtx
 }
 

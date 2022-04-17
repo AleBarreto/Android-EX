@@ -5,6 +5,12 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MovieResultDetail(
+    val id: Long,
+    val title: String,
+    val overview: String,
+    val backdropPath: String,
+    val posterPath: String,
+    val voteAverage: Double,
     val genres: List<Genre>,
     val productionCompanies: List<Company>
 ) : Parcelable

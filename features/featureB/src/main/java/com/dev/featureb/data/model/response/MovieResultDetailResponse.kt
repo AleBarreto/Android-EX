@@ -6,6 +6,18 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MovieResultDetailResponse(
+    @SerializedName(value = "id")
+    val id: Long,
+    @SerializedName(value = "title")
+    val title: String,
+    @SerializedName(value = "overview")
+    val overview: String,
+    @SerializedName(value = "backdrop_path")
+    val backdropPath: String,
+    @SerializedName(value = "poster_path")
+    val posterPath: String? = null,
+    @SerializedName(value = "vote_average")
+    val voteAverage: Double,
     @SerializedName(value = "genres")
     val genres: List<GenreResponse>,
     @SerializedName(value = "production_companies")
@@ -25,7 +37,7 @@ data class CompanyResponse(
     @SerializedName(value = "id")
     val id: Long,
     @SerializedName(value = "logo_path")
-    val logoPath: String,
+    val logoPath: String? = null,
     @SerializedName(value = "name")
     val name: String,
     @SerializedName(value = "origin_country")

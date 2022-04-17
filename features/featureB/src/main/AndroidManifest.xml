@@ -3,7 +3,9 @@
     package="com.dev.featureb">
 
     <application>
-        <activity android:name=".presentation.FeatureBActivity"/>
+        <activity
+            android:theme="@style/ThemeDetailsFeatureB"
+            android:name=".presentation.ui.FeatureBActivity"/>
     </application>
 
 </manifest>

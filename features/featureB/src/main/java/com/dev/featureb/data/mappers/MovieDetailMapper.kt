@@ -9,13 +9,19 @@ import com.dev.featureb.domain.model.MovieResultDetail
 
 
 internal fun MovieResultDetailResponse.toDomain() = MovieResultDetail(
+    id = id,
+    title = title,
+    overview = overview,
+    backdropPath = backdropPath,
+    posterPath = posterPath.orEmpty(),
+    voteAverage = voteAverage,
     genres = genres.map { it.toDomain() },
     productionCompanies = productionCompanies.map { it.toDomain() }
 )
 
 internal fun CompanyResponse.toDomain() = Company(
     id = id,
-    logoPath = logoPath,
+    logoPath = logoPath.orEmpty(),
     name = name,
     originCountry = originCountry
 )
