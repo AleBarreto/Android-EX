@@ -3,6 +3,7 @@ package com.dev.featurea.presentation.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.dev.commons.lifecycle.observerViewModelWhenStarted
 import com.dev.featurea.R
 import com.dev.featurea.databinding.FeatureAActivityFeatureABinding
@@ -53,9 +54,11 @@ class FeatureAActivity : AppCompatActivity(R.layout.feature_a_activity_feature_a
     }
 
     private fun setupMovieUiState(uiState: MovieUiState) {
-        adapter.submitList(uiState.movies)
-        // error = uiState.hasError
-        // loading = uiState.isLoading
+        with(uiState) {
+            adapter.submitList(movies)
+            binding.progress.isVisible = isLoading
+            binding.containerError.isVisible = hasError
+        }
     }
 
     private fun setupRecyclerView() {

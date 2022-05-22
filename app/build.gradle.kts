@@ -47,6 +47,7 @@ dependencies {
     Features.loadAll().forEach { implementation(project(it)) }
 
     implementation(project(Network.get()))
+    implementation(project(Navigation.get()))
 
     Google.loadAll().forEach { implementation(it) }
     kapt(Google.hiltCompiler)
