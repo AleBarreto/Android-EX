@@ -89,6 +89,20 @@ object JUnit {
     )
 }
 
+object TestFeature {
+    const val coroutinesTest =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTest}"
+    const val kotlinTest = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlinTest}"
+    const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    fun loadAll() = listOf(
+        coroutinesTest,
+        kotlinTest,
+        turbine,
+        mockk
+    )
+}
+
 object AndroidTest {
     const val extJUnit = "androidx.test.ext:junit:${Versions.jUnitExt}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"

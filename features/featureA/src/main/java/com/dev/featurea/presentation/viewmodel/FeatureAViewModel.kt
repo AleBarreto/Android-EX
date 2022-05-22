@@ -1,6 +1,5 @@
 package com.dev.featurea.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev.commons.coroutine.di.DispatchersIo
@@ -27,10 +26,10 @@ internal class FeatureAViewModel @Inject constructor(
         viewModelScope.launch {
             useCase()
                 .flowOn(dispatcher)
-                .onStart { _uiState.update { it.copy(isLoading = true) } }
-                .catch { _uiState.update { it.copy(isLoading = false, hasError = true) } }
+                .onStart { _uiState.update { it.showLoading() } }
+                .catch { _uiState.update { it.showError() } }
                 .collect { movieResult ->
-                    _uiState.update { it.copy(movies = movieResult.results) }
+                    _uiState.update { it.showMovies(movieResult.results) }
                 }
         }
     }

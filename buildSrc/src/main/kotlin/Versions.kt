@@ -23,6 +23,10 @@ object Versions {
     const val logInterceptor = "4.9.3"
 
     const val jUnit = "4.+"
+    const val coroutinesTest = "1.5.1"
+    const val kotlinTest = "1.6.21"
+    const val turbine = "0.8.0"
+    const val mockk = "1.11.0"
 
     const val jUnitExt = "1.1.3"
     const val espressoCore = "3.4.0"
