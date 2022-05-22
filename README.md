@@ -63,6 +63,8 @@ navigation.navigationToFeatureB(this, idMovie = id)
 
 ![navigation](https://github.com/AleBarreto/Android-EX/blob/main/prints/navigation.png?raw=true)
 
+ ![features](https://github.com/AleBarreto/Android-EX/blob/main/prints/features.png?raw=true)
+
 ## Network
 
 Foi criado o modulo de network para prover toda a configuração do retrofit e seus interceptors:
