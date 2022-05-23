@@ -40,16 +40,12 @@ internal class FeatureBViewModel @Inject constructor(
     }
 
     private fun showLoading() =
-        _uiState.update { it.copy(isLoading = true) }
+        _uiState.update { it.showLoading() }
 
-    private fun setError() = _uiState.update { it.copy(isLoading = false, hasError = true) }
+    private fun setError() = _uiState.update { it.showError() }
 
     private fun setDetailsState(movieResultDetail: MovieResultDetail, credits: Credits) =
         _uiState.update {
-            it.copy(
-                movieResultDetail = movieResultDetail,
-                credits = credits,
-                isLoading = false
-            )
+            it.setDetailsState(movieResultDetail, credits)
         }
 }
