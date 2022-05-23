@@ -1,6 +1,8 @@
 package com.dev.featureb.di
 
 import com.dev.featureb.data.repository.MovieDetailRepositoryImpl
+import com.dev.featureb.data.sources.RemoteMovieDetailDataSource
+import com.dev.featureb.data.sources.RemoteMovieDetailDataSourceImpl
 import com.dev.featureb.domain.repository.MovieDetailRepository
 import dagger.Binds
 import dagger.Module
@@ -15,4 +17,9 @@ internal abstract class DataModule {
     abstract fun bindMovieDetailRepository(
         movieDetailRepositoryImpl: MovieDetailRepositoryImpl
     ): MovieDetailRepository
+
+    @Binds
+    abstract fun bindRemoteMovieDetailDataSource(
+        remoteMovieDetailDataSourceImpl: RemoteMovieDetailDataSourceImpl
+    ): RemoteMovieDetailDataSource
 }

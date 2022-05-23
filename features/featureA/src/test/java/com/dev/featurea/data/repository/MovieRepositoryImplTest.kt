@@ -16,7 +16,6 @@ import kotlin.time.ExperimentalTime
 
 private const val ONCE = 1
 
-@ExperimentalTime
 class MovieRepositoryImplTest {
     private val remoteMovieDataSource: RemoteMovieDataSource = mockk()
     private val repositoryImpl: MovieRepository = MovieRepositoryImpl(remoteMovieDataSource)

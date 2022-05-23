@@ -14,7 +14,6 @@ import kotlin.time.ExperimentalTime
 
 private const val ONCE = 1
 
-@ExperimentalTime
 class RemoteMovieDataSourceImplTest {
 
     private val service: FeatureAService = mockk()

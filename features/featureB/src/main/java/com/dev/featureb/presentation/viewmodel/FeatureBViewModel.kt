@@ -29,11 +29,11 @@ internal class FeatureBViewModel @Inject constructor(
     fun getDetailsMovieById(idMovie: Long) {
         showLoading()
         viewModelScope.launch(dispatcher) {
-            try {
+            runCatching {
                 val movieDetail = getMovieDetailUseCase(idMovie)
                 val credits = getCreditsByMovieIdUseCase(idMovie)
                 setDetailsState(movieResultDetail = movieDetail, credits = credits)
-            } catch (e: Exception) {
+            }.onFailure {
                 setError()
             }
         }

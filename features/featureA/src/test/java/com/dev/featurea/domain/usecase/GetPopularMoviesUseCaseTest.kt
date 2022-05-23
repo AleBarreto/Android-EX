@@ -15,7 +15,6 @@ import kotlin.time.ExperimentalTime
 
 private const val ONCE = 1
 
-@ExperimentalTime
 class GetPopularMoviesUseCaseTest {
     private val repository: MovieRepository = mockk()
     private val useCase = GetPopularMoviesUseCase(repository)
