@@ -131,11 +131,21 @@ internal class RemoteMovieDataSource @Inject constructor(private val service: Fe
 
 ## Camadas do modulo feature
 
-TODO
+Cada modulo feature segue o conceito do clean arch baseado na divisão de camadas, porém todo o projeto foi modularizado pensando em novas features e cada feature pode possuir camadas a mais baseado em sua necessidade.
+
+- Data - responsavel por prover os conteudos e request da API.
+- DI - responsavel pela injeção de dependencia do modulo.
+- Domain - regras de negocios se houver.
+- Navigation - prover navegação para dentro do modulo.
+- Presentation - toda camada de view e viewModels.
+
+![camadas](https://github.com/AleBarreto/Android-EX/blob/main/prints/camadas.png?raw=true)
 
 ## Commons
 
- TODO
+ O modulo commons deve ter a responsabilidade de conter tudo que for comun entre os modulos, exemplo: ExtensionFunctions e tambem injeçoes de depencias comum entre os modulos como os Dispatchers. 
+ 
+ ![commons](https://github.com/AleBarreto/Android-EX/blob/main/prints/commons.png?raw=true)
 
 ## BuildSrc
 
